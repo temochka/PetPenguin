@@ -1,0 +1,10 @@
+#!/bin/sh
+REMOTE_PATTERN=${1:-".+"}
+
+git config -l | \
+  egrep "remote\.$REMOTE_PATTERN\.url" | \
+  sed -E "s/^.+\=//" | \
+  sed -E 's/git@github\.com:(.+)\.git/https:\/\/github.com\/\1/' | \
+  sed -E 's/https:\/\/github\.com\/(.+)\.git/https:\/\/github.com\/\1/' | \
+  sed -E 's/git@[0-9a-z\-]+\.git\.beanstalkapp\.com:\/([0-9a-z\-]+)\/([0-9a-z\-]+)\.git/https:\/\/\1.beanstalkapp.com\/\2/' | \
+  egrep '^https://[^\:]+$'
