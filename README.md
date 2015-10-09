@@ -16,6 +16,7 @@ Nothing to see here.
   * Other features:
     * Bi-directional clipboard
 * Install Ubuntu 15.04 Minimal.
+* Install VirtualBox Guest Additions
 * Install `openssh-server`.
 * Install SSH key pair.
 * Install Git.
