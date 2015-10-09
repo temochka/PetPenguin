@@ -1,8 +1,7 @@
-// Settings in here override those in "Default/Preferences.sublime-settings",
-// and are overridden in turn by file type specific settings.
 {
-	"font_size": 12.0,
+	"dpi_scale": 2.0,
 	"font_face": "Fira Mono",
+	"font_size": 12.0,
 	"ignored_packages":
 	[
 		"Vintage"
