@@ -1,0 +1,18 @@
+#!/bin/bash
+
+mode=${1:-"--prev"}
+
+if [[ $mode != "--prev" && $mode != "--next" ]]; then
+   echo "Usage: $0 [--option]"
+   echo "Available options: --prev, --next"
+   exit 0
+fi
+
+if [[ $mode == "--prev" ]]; then
+   KEY_CODE=123
+else
+   KEY_CODE=124
+fi
+
+ssh macbook 'osascript -e "tell application \"System Events\" to key code $KEY_CODE using control down"'
+
