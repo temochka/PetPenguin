@@ -1,0 +1,15 @@
+#!/bin/bash
+
+local_browser=$(which surf || which firefox)
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <url>"
+    exit 0
+fi
+
+if [[ $1 == "file:///*" ]]; then
+    xargs $local_browser $1
+else
+    ssh macbook open $1
+fi
+
