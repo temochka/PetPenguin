@@ -181,6 +181,8 @@ st_user_dir="$HOME/.config/sublime-text-3/Packages/User"
 mkdir -p $st_user_dir
 
 ln -f "$DIR/extras/Default (Linux).sublime-keymap" "$st_user_dir/Default (Linux).sublime-keymap"
-cp "$DIR/extras/Preferences.sublime-settings" "$st_user_dir/Preferences.sublime-settings"
+cp -n "$DIR/extras/Preferences.sublime-settings" "$st_user_dir/Preferences.sublime-settings"
 ln -sf "$DIR/extras/dpi.py" "$st_user_dir/"
+
+donezo
 
