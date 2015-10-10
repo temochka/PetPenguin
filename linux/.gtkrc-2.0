@@ -1,0 +1,12 @@
+include "/usr/share/themes/Raleigh/gtk-2.0/gtkrc"
+
+style "user-font" {
+	font_name = "Fira Sans Semi-Light 10.5"
+}
+
+widget_class "*" style "user-font"
+
+gtk-font-name="Fira Sans Semi-Light 10.5"
+
+# include "~/.gtkrc.mine"
+

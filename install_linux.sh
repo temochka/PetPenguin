@@ -50,6 +50,7 @@ ln -sf $DIR/.Xresources.hidpi ~/.Xresources.hidipi
 ln -sf $DIR/.Xresources.lodpi ~/.Xresources.lodpi
 ln -sf $DIR/.auto-dpi.sh ~/.auto-dpi.sh
 ln -sf $DIR/.tmux.conf ~/.tmux.conf
+ln -sf $DIR/.gtkrc-2.0 ~/
 
 donezo
 
@@ -163,7 +164,6 @@ git clone git://github.com/tpope/vim-leiningen.git > /dev/null 2>&1
 git clone git://github.com/tpope/vim-projectionist.git > /dev/null 2>&1
 
 donezo
-
 
 ################################################################################
 header "# Configuring SSH..."
