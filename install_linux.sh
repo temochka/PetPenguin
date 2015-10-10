@@ -149,6 +149,8 @@ donezo
 header "# Configuring Vim..."
 ################################################################################
 
+sudo apt-get install vim > $LOGDIR/apt.log
+
 ln -sf $DIR/.vimrc ~/.vimrc
 mkdir -p ~/.vim ~/.vim/bundle ~/.vim/autoload
 curl -Sso ~/.vim/autoload/pathogen.vim \
