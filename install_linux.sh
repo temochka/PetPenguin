@@ -124,7 +124,8 @@ ln -sf $DIR/hidpi-fonts.conf $fontconfig_dir/
 ln -sf $DIR/lodpi-fonts.conf $fontconfig_dir/
 
 sudo apt-get install fonts-play fonts-droid fonts-ubuntu-title \
-    fonts-ubuntu-font-family-console fonts-opensymbol fonts-liberation >> $LOGDIR/apt.log
+    fonts-ubuntu-font-family-console fonts-opensymbol fonts-liberation \
+    ttf-ubuntu-font-family >> $LOGDIR/apt.log
 
 
 mkdir -p ~/projects
