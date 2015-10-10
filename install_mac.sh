@@ -1,5 +1,6 @@
 #!/bin/bash
 
+DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 clr_red=$(tput setaf 1)
 clr_reg=$(tput sgr0)
 
@@ -9,6 +10,6 @@ if [[ ! `uname` == 'Darwin' ]]; then
 fi
 
 mkdir -p ~/bin
-ln -sf scripts/git-web ~/bin/
-ln -sf mac/scripts/git-web-open ~/bin/
+ln -sf $DIR/scripts/git-web ~/bin/
+ln -sf $DIR/mac/scripts/git-web-open ~/bin/
 
