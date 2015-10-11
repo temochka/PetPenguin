@@ -33,7 +33,8 @@ apt_last_updated=$(ls --full-time /var/cache/apt/pkgcache.bin | cut -d' ' -f6)
 if [ `date +%F` \> $apt_last_updated ]; then
     sudo apt-get update > $LOGDIR/apt.log
 fi
-sudo apt-get install wget unzip tmux slim surf >> $LOGDIR/apt.log
+sudo apt-get -y install xorg build-essential wget unzip tmux slim surf libx11-dev \
+    libxft-dev libxinerama-dev feh >> $LOGDIR/apt.log
 
 donezo
 
@@ -41,12 +42,11 @@ donezo
 header "# Linking all the configs..."
 ################################################################################
 
-ln -sf $DIR/.profile ~/.profile
 ln -sf $DIR/.bashrc ~/.bashrc
 ln -sf $DIR/.asoundrc ~/.asoundrc
 ln -sf $DIR/.xinitrc ~/.xinitrc
 ln -sf $DIR/.Xresources ~/.Xresources
-ln -sf $DIR/.Xresources.hidpi ~/.Xresources.hidipi
+ln -sf $DIR/.Xresources.hidpi ~/.Xresources.hidpi
 ln -sf $DIR/.Xresources.lodpi ~/.Xresources.lodpi
 ln -sf $DIR/.auto-dpi.sh ~/.auto-dpi.sh
 ln -sf $DIR/.tmux.conf ~/.tmux.conf
@@ -124,7 +124,7 @@ mkdir -p $fontconfig_dir
 ln -sf $DIR/hidpi-fonts.conf $fontconfig_dir/
 ln -sf $DIR/lodpi-fonts.conf $fontconfig_dir/
 
-sudo apt-get install fonts-play fonts-droid fonts-ubuntu-title \
+sudo apt-get -y install fonts-play fonts-droid fonts-ubuntu-title \
     fonts-ubuntu-font-family-console fonts-opensymbol fonts-liberation \
     ttf-ubuntu-font-family >> $LOGDIR/apt.log
 
@@ -134,10 +134,10 @@ sudo mkdir -p $fira_target_dir
 cd ~/projects
 
 if [ ! -d fira ]; then
-    wget -c https://github.com/mozilla/Fira/archive/master.zip
+    wget -nc https://github.com/mozilla/Fira/archive/master.zip
     unzip master.zip
     rm master.zip
-    mv Fira_master fira
+    mv Fira-master fira
 fi
 
 sudo cp ~/projects/fira/ttf/* $fira_target_dir
@@ -149,7 +149,7 @@ donezo
 header "# Configuring Vim..."
 ################################################################################
 
-sudo apt-get install vim > $LOGDIR/apt.log
+sudo apt-get -y install vim > $LOGDIR/apt.log
 
 ln -sf $DIR/.vimrc ~/.vimrc
 mkdir -p ~/.vim ~/.vim/bundle ~/.vim/autoload
@@ -188,3 +188,10 @@ ln -sf "$DIR/extras/dpi.py" "$st_user_dir/"
 
 donezo
 
+################################################################################
+header "# Configuring Git..."
+################################################################################
+git config --global user.name "Artem Chistyakov"
+git config --global user.email "chistyakov.artem@gmail.com"
+
+donezo
