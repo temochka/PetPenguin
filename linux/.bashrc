@@ -116,5 +116,15 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Vim FTW
+export EDITOR=vim
+export BROWSER=impostor
+
+# Rbenv
+if [ -d "$HOME/.rbenv" ] ; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
+
 ssh-add -l >/dev/null || ssh-add
 
