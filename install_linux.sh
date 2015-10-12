@@ -33,8 +33,9 @@ apt_last_updated=$(ls --full-time /var/cache/apt/pkgcache.bin | cut -d' ' -f6)
 if [ `date +%F` \> $apt_last_updated ]; then
     sudo apt-get update > $LOGDIR/apt.log
 fi
+sudo apt-get -y install policykit-1
 sudo apt-get -y install xorg build-essential wget unzip tmux slim surf libx11-dev \
-    libxft-dev libxinerama-dev feh >> $LOGDIR/apt.log
+    libxft-dev libxinerama-dev feh dkms >> $LOGDIR/apt.log
 
 donezo
 
