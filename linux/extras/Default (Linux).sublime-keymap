@@ -231,7 +231,7 @@
 	{ "keys": ["ctrl+r"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
 	{ "keys": ["ctrl+g"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
 	{ "keys": ["ctrl+;"], "command": "show_overlay", "args": {"overlay": "goto", "text": "#"} },
-	{ "keys": ["f12"], "command": "goto_definition" },
+	{ "keys": ["super+g"], "command": "goto_definition" },
 	{ "keys": ["super+shift+r"], "command": "goto_symbol_in_project" },
 	{ "keys": ["alt+-"], "command": "jump_back" },
 	{ "keys": ["alt+shift+-"], "command": "jump_forward" },
