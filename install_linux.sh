@@ -12,6 +12,11 @@ if [[ `uname` == 'Darwin' ]]; then
     exit 1
 fi
 
+if [[ `whoami` == 'root' ]]; then
+    echo "Whoa! No roots here, only artems."
+    exit 1
+fi
+
 echo "Commencing installation, the logs are kept in ${LOGDIR}..."
 
 header ()
