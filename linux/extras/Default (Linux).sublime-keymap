@@ -93,9 +93,9 @@
 	// { "keys": ["super+pageup"], "command": "prev_view" },
 
 	{ "keys": ["ctrl+tab"], "command": "next_view_in_stack" },
-	{ "keys": ["super+shift+]"], "command": "next_view_in_stack" },
+	{ "keys": ["super+shift+]"], "command": "next_view" },
 	{ "keys": ["ctrl+shift+tab"], "command": "prev_view_in_stack" },
-	{ "keys": ["super+shift+["], "command": "prev_view_in_stack" },
+	{ "keys": ["super+shift+["], "command": "prev_view" },
 
 	{ "keys": ["super+a"], "command": "select_all" },
 	{ "keys": ["super+shift+l"], "command": "split_selection_into_lines" },
