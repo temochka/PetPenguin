@@ -1,5 +1,5 @@
 #!/bin/bash
-DEFAULT_SESSION=dwm
+session=${1:-dwm}
 
 eval $(ssh-agent)
 
@@ -30,12 +30,9 @@ if [ -f ~/.xinitrc.ext ]; then
 fi
 
 # Start the window manager
-case $1 in
+case $session in
   dwm)
-    exec dwm
-    ;;
-  *)
-    exec $DEFAULT_SESSION
+    ~/bin/dwmdwmdwm
     ;;
 esac
 
