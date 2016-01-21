@@ -16,6 +16,9 @@ fi
 # Fix unreasonable keypress defaults on Linux
 xset r rate 200 30
 
+# Disable screensaver
+xset s off
+
 # Add Russian keyboard layout with toggle shortcut Left Alt + Left Shift
 setxkbmap -layout us,ru -option grp:lalt_lshift_toggle
 
