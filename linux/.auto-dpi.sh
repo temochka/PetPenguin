@@ -22,6 +22,7 @@ case $resolution in
     ln -fs $fonts_avail_dir/hidpi-fonts.conf $fonts_dir/fonts.conf
     export UI_SCALE_FACTOR=2
     export GDK_SCALE=2
+    export GDK_DPI_SCALE=0.5
     xrandr --dpi 227
     xrdb -merge ~/.Xresources.hidpi
     ;;
