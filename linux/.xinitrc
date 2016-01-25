@@ -32,7 +32,7 @@ fi
 # Start the window manager
 case $session in
   dwm)
-    ~/bin/dwmdwmdwm
+    exec ~/bin/dwmdwmdwm
     ;;
 esac
 
