@@ -19,8 +19,8 @@ xset r rate 200 30
 # Disable screensaver
 xset s off
 
-# Add Russian keyboard layout with toggle shortcut Left Alt + Left Shift
-setxkbmap -layout us,ru -option grp:lalt_lshift_toggle
+# Add Russian keyboard layout with toggle shortcut Left Ctrl + Left Shift
+setxkbmap -layout us,ru -option grp:lctrl_lshift_toggle
 
 # Run VirtualBox helper programs
 VBoxClient-all
