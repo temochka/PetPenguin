@@ -27,7 +27,7 @@ VBoxClient-all
 
 # Load wallpaper if set
 if [ -f ~/.fehbg ]; then
-    eval $(cat ~/.fehbg)
+    source ~/.fehbg
 fi
 
 # Run extensions
