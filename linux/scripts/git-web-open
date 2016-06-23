@@ -1,0 +1,3 @@
+#!/bin/sh
+git web $1 | xargs $BROWSER
+
