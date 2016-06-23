@@ -44,7 +44,7 @@ if [ `date +%F` \> $apt_last_updated ]; then
     sudo apt-get update > $LOGDIR/apt.log
 fi
 sudo apt-get -y install policykit-1
-sudo apt-get -y install xorg build-essential wget unzip tmux slim surf libx11-dev \
+sudo apt-get -y install xorg build-essential wget unzip tmux surf libx11-dev \
     libxft-dev libxinerama-dev feh dkms xclip >> $LOGDIR/apt.log
 
 donezo
@@ -117,11 +117,8 @@ cd ~/projects/dmenu
 make > $LOGDIR/dmenu.log
 sudo make install >> $LOGDIR/dmenu.log
 
-sudo cp -r $DIR/slim-theme /usr/share/slim/themes/debian-lines-hidpi
-sudo sed -ri 's/^#? ?default_user.*/default_user artem/' /etc/slim.conf
-sudo sed -i 's/^current_theme.*/current_theme debian-lines-hidpi/' /etc/slim.conf
-sudo sed -i 's/^login_cmd.*/login_cmd exec \/bin\/bash - ~\/.xinitrc %session/' /etc/slim.conf
-sudo sed -ri 's/^#? ?auto_login.*/auto_login yes/' /etc/slim.conf
+# Auto-login to virtual console
+sudo sed -i 's/^ExecStart=.*/ExecStart=-\/sbin\/agetty -a artem %I \$TERM/' /etc/systemd/system/getty.target.wants/getty@tty1.service
 
 donezo
 

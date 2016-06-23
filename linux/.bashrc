@@ -128,6 +128,11 @@ fi
 
 ssh-add -l >/dev/null || ssh-add
 
-
 export NVM_DIR="/home/artem/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] ; then
+    while true; do
+        startx
+    done
+fi
