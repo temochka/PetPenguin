@@ -5,12 +5,12 @@ eval $(ssh-agent)
 
 # Explicitly load the profile
 if [ -f ~/.profile ]; then
-    source ~/.profile
+    eval $(cat ~/.profile)
 fi
 
 # Auto-adjust DPI based on the used display
 if [ -f ~/.auto-dpi.sh ]; then
-    source ~/.auto-dpi.sh
+    eval $(cat ~/.auto-dpi.sh)
 fi
 
 # Fix unreasonable keypress defaults on Linux
@@ -27,12 +27,12 @@ VBoxClient-all
 
 # Load wallpaper if set
 if [ -f ~/.fehbg ]; then
-    source ~/.fehbg
+    eval $(~/.fehbg)
 fi
 
 # Run extensions
 if [ -f ~/.xinitrc.ext ]; then
-    source ~/.xinitrc.ext
+    eval $(~/.xinitrc.ext)
 fi
 
 # Start the window manager
