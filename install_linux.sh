@@ -73,6 +73,7 @@ mkdir -p ~/bin
 ln -sf $DIR/scripts/pbcopy ~/bin/
 ln -sf $DIR/scripts/impostor ~/bin/
 ln -sf $DIR/scripts/dwmdwmdwm ~/bin/
+ln -sf $DIR/scripts/git-web-open ~/bin/
 ln -sf $DIR/../scripts/git-web ~/bin/
 
 ################################################################################
