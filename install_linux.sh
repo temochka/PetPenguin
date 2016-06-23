@@ -73,6 +73,7 @@ mkdir -p ~/bin
 ln -sf $DIR/scripts/pbcopy ~/bin/
 ln -sf $DIR/scripts/impostor ~/bin/
 ln -sf $DIR/scripts/dwmdwmdwm ~/bin/
+ln -sf $DIR/scripts/ssh-add-macbook ~/bin/
 ln -sf $DIR/../scripts/git-web ~/bin/
 
 ################################################################################
@@ -133,7 +134,7 @@ mkdir -p $fontconfig_dir
 ln -sf $DIR/hidpi-fonts.conf $fontconfig_dir/
 ln -sf $DIR/lodpi-fonts.conf $fontconfig_dir/
 
-sudo apt-get -y install fonts-play fonts-droid fonts-ubuntu-title \
+sudo apt-get -y install fonts-play fonts-ubuntu-title \
     fonts-ubuntu-font-family-console fonts-opensymbol fonts-liberation \
     ttf-ubuntu-font-family >> $LOGDIR/apt.log
 
