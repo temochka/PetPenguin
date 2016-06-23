@@ -54,6 +54,7 @@ header "# Linking all the configs..."
 ################################################################################
 
 ln -sf $DIR/.bashrc ~/.bashrc
+ln -sf $DIR/.bash_aliases ~/.bash_aliases
 ln -sf $DIR/.asoundrc ~/.asoundrc
 ln -sf $DIR/.xinitrc ~/.xinitrc
 ln -sf $DIR/.Xresources ~/.Xresources
