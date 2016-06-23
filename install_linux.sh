@@ -45,7 +45,7 @@ if [ `date +%F` \> $apt_last_updated ]; then
 fi
 sudo apt-get -y install policykit-1
 sudo apt-get -y install xorg build-essential wget unzip tmux slim surf libx11-dev \
-    libxft-dev libxinerama-dev feh dkms >> $LOGDIR/apt.log
+    libxft-dev libxinerama-dev feh dkms xclip >> $LOGDIR/apt.log
 
 donezo
 
