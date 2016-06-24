@@ -121,7 +121,8 @@ make > $LOGDIR/dmenu.log
 sudo make install >> $LOGDIR/dmenu.log
 
 # Auto-login to virtual console
-sudo sed -i 's/^ExecStart=.*/ExecStart=-\/sbin\/agetty -a artem %I \$TERM/' /etc/systemd/system/getty.target.wants/getty@tty1.service
+sudo mkdir -p /etc/systemd/system/getty@tty1.service.d
+sudo cp $DIR/autologin.conf /etc/systemd/system/getty@tty1.service.d/
 
 donezo
 
