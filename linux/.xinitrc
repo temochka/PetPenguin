@@ -5,12 +5,12 @@ eval $(ssh-agent)
 
 # Explicitly load the profile
 if [ -f ~/.profile ]; then
-    eval $(cat ~/.profile)
+    . ~/.profile
 fi
 
 # Auto-adjust DPI based on the used display
 if [ -f ~/.auto-dpi.sh ]; then
-    eval $(cat ~/.auto-dpi.sh)
+    . ~/.auto-dpi.sh
 fi
 
 # Fix unreasonable keypress defaults on Linux
@@ -32,7 +32,7 @@ fi
 
 # Run extensions
 if [ -f ~/.xinitrc.ext ]; then
-    eval $(~/.xinitrc.ext)
+    . ~/.xinitrc.ext
 fi
 
 # Start the window manager
