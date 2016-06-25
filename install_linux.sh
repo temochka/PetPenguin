@@ -2,6 +2,7 @@
 
 DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)/linux"
 LOGDIR=$(mktemp -dt)
+: ${XDG_CONFIG_HOME:="~/.config"}
 clr_ylw=$(tput setaf 3)
 clr_red=$(tput setaf 1)
 clr_grn=$(tput setaf 2)
@@ -53,6 +54,14 @@ donezo
 header "# Linking all the configs..."
 ################################################################################
 
+GTK2_KEY_THEMES_DIR=~/.themes/mac/gtk-2.0-key
+GTK3_CONFIG_DIR=$XDG_CONFIG_HOME/gtk-3.0/
+GTK3_KEY_THEMES_DIR=~/.themes/mac/gtk-3.0
+
+mkdir -p $GTK2_KEY_THEMES_DIR
+mkdir -p $GTK3_CONFIG_DIR
+mkdir -p $GTK3_KEY_THEMES_DIR
+
 ln -sf $DIR/.bashrc ~/.bashrc
 ln -sf $DIR/.bash_aliases ~/.bash_aliases
 ln -sf $DIR/.asoundrc ~/.asoundrc
@@ -63,6 +72,9 @@ ln -sf $DIR/.Xresources.lodpi ~/.Xresources.lodpi
 ln -sf $DIR/.auto-dpi.sh ~/.auto-dpi.sh
 ln -sf $DIR/.tmux.conf ~/.tmux.conf
 ln -sf $DIR/.gtkrc-2.0 ~/
+ln -sf $DIR/gtk-2.0-key-theme $GTK2_KEY_THEMES_DIR/gtkrc
+ln -sf $DIR/gtk-3.0-settings.ini $GTK3_CONFIG_DIR/settings.ini
+ln -sf $DIR/gtk-3.0-key-theme $GTK3_KEY_THEMES_DIR/gtk-keys.css
 
 donezo
 
