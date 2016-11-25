@@ -1,0 +1,45 @@
+@binding-set gtk-mac-text-entry {
+  bind "<alt>Right"           { "move-cursor" (words,  1, 0) };
+  bind "<alt>KP_Right"        { "move-cursor" (words,  1, 0) };
+  bind "<alt>Left"            { "move-cursor" (words, -1, 0) };
+  bind "<alt>KP_Left"         { "move-cursor" (words, -1, 0) };
+  bind "<shift><alt>Right"    { "move-cursor" (words,  1, 1) };
+  bind "<shift><alt>KP_Right" { "move-cursor" (words,  1, 1) };
+  bind "<shift><alt>Left"     { "move-cursor" (words, -1, 1) };
+  bind "<shift><alt>KP_Left"  { "move-cursor" (words, -1, 1) };
+
+  bind "<super>Right"           { "move-cursor" (paragraph-ends,  1, 0) };
+  bind "<super>KP_Right"        { "move-cursor" (paragraph-ends,  1, 0) };
+  bind "<super>Left"            { "move-cursor" (paragraph-ends, -1, 0) };
+  bind "<super>KP_Left"         { "move-cursor" (paragraph-ends, -1, 0) };
+  bind "<shift><super>Right"    { "move-cursor" (paragraph-ends,  1, 1) };
+  bind "<shift><super>KP_Right" { "move-cursor" (paragraph-ends,  1, 1) };
+  bind "<shift><super>Left"     { "move-cursor" (paragraph-ends, -1, 1) };
+  bind "<shift><super>KP_Left"  { "move-cursor" (paragraph-ends, -1, 1) };
+
+  bind "<alt>Delete"    { "delete-from-cursor" (word-ends,  1) };
+  bind "<alt>KP_Delete" { "delete-from-cursor" (word-ends,  1) };
+  bind "<alt>BackSpace" { "delete-from-cursor" (word-ends, -1) };
+
+  bind "<super>Delete"    { "delete-from-cursor" (paragraph-ends,  1) };
+  bind "<super>KP_Delete" { "delete-from-cursor" (paragraph-ends,  1) };
+  bind "<super>BackSpace" { "delete-from-cursor" (paragraph-ends, -1) };
+
+  bind "<super>A" { "move-cursor" (buffer-ends, -1, 0)
+                    "move-cursor" (buffer-ends,  1, 1) };
+
+  bind "<alt>x" {   "cut-clipboard" () };
+  bind "<alt>c" {  "copy-clipboard" () };
+  bind "<alt>v" { "paste-clipboard" () };
+  bind "<super>x" {   "cut-clipboard" () };
+  bind "<super>c" {  "copy-clipboard" () };
+  bind "<super>v" { "paste-clipboard" () };
+}
+
+GtkEntry {
+  gtk-key-bindings: gtk-mac-text-entry;
+}
+
+GtkTextView {
+  gtk-key-bindings: gtk-mac-text-entry;
+}

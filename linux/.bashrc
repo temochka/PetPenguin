@@ -126,11 +126,17 @@ if [ -d "$HOME/.rbenv" ] ; then
     eval "$(rbenv init -)"
 fi
 
+# XDG
+export XDG_CONFIG_HOME=$HOME/.config
+
+# SSH
 ssh-add -l >/dev/null || ssh-add
 
+# NVM
 export NVM_DIR="/home/artem/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+# X11
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] ; then
     while true; do
         startx
