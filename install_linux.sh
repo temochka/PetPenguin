@@ -2,7 +2,7 @@
 
 DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)/linux"
 LOGDIR=$(mktemp -dt)
-: ${XDG_CONFIG_HOME:="~/.config"}
+: ${XDG_CONFIG_HOME:="$HOME/.config"}
 clr_ylw=$(tput setaf 3)
 clr_red=$(tput setaf 1)
 clr_grn=$(tput setaf 2)
@@ -33,7 +33,8 @@ donezo ()
 ################################################################################
 header "# Environment settings..."
 ################################################################################
-sudo gpasswd -a artem vboxsf
+sudo gpasswd -a $(whoami) vboxsf
+sudo gpasswd -a $(whoami) dialout
 
 ################################################################################
 header "# Installing packages..."
@@ -90,6 +91,13 @@ ln -sf $DIR/scripts/ssh-add-macbook ~/bin/
 ln -sf $DIR/scripts/git-web-open ~/bin/
 ln -sf $DIR/../scripts/git-web ~/bin/
 
+
+################################################################################
+header "# Linking all scripts..."
+################################################################################
+mkdir -p ~/.ssh
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+
 ################################################################################
 header "# Configuring desktop environment..."
 ################################################################################
@@ -135,6 +143,8 @@ sudo make install >> $LOGDIR/dmenu.log
 # Auto-login to virtual console
 sudo mkdir -p /etc/systemd/system/getty@tty1.service.d
 sudo cp $DIR/autologin.conf /etc/systemd/system/getty@tty1.service.d/
+sudo sed -i "s/\$USER/${USER}/" /etc/systemd/system/getty@tty1.service.d/autologin.conf
+sudo systemctl enable getty@tty1.service
 
 donezo
 
@@ -159,8 +169,8 @@ sudo mkdir -p $fira_target_dir
 cd ~/projects
 
 if [ ! -d fira ]; then
-    wget -nc https://github.com/mozilla/Fira/archive/master.zip
-    unzip master.zip
+    wget -qnc https://github.com/mozilla/Fira/archive/master.zip
+    unzip master.zip > /dev/null
     rm master.zip
     mv Fira-master fira
 fi
@@ -189,14 +199,6 @@ git clone git://github.com/tpope/vim-dispatch.git > /dev/null 2>&1
 git clone git://github.com/tpope/vim-fireplace.git > /dev/null 2>&1
 git clone git://github.com/tpope/vim-leiningen.git > /dev/null 2>&1
 git clone git://github.com/tpope/vim-projectionist.git > /dev/null 2>&1
-
-donezo
-
-################################################################################
-header "# Configuring SSH..."
-################################################################################
-
-grep "Host macbook" ~/.ssh/config > /dev/null 2>&1 || cat $DIR/.ssh_config >> ~/.ssh/config && chmod 660 ~/.ssh/config
 
 donezo
 
