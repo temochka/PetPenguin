@@ -5,34 +5,40 @@ eval $(ssh-agent)
 
 # Explicitly load the profile
 if [ -f ~/.profile ]; then
-    source ~/.profile
+    . ~/.profile
 fi
 
 # Auto-adjust DPI based on the used display
 if [ -f ~/.auto-dpi.sh ]; then
-    source ~/.auto-dpi.sh
+    . ~/.auto-dpi.sh
 fi
 
 # Fix unreasonable keypress defaults on Linux
 xset r rate 200 30
+
+# Disable screensaver
+xset -dpms s off
+
+# Add Russian keyboard layout with toggle shortcut Left Ctrl + Left Shift
+setxkbmap -layout us,ru -option grp:lctrl_lshift_toggle
 
 # Run VirtualBox helper programs
 VBoxClient-all
 
 # Load wallpaper if set
 if [ -f ~/.fehbg ]; then
-    eval $(cat ~/.fehbg)
+    eval $(~/.fehbg)
 fi
 
 # Run extensions
 if [ -f ~/.xinitrc.ext ]; then
-    source ~/.xinitrc.ext
+    . ~/.xinitrc.ext
 fi
 
 # Start the window manager
 case $session in
   dwm)
-    ~/bin/dwmdwmdwm
+    exec ~/bin/dwmdwmdwm
     ;;
 esac
 

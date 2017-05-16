@@ -2,6 +2,7 @@
 
 DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)/linux"
 LOGDIR=$(mktemp -dt)
+: ${XDG_CONFIG_HOME:="~/.config"}
 clr_ylw=$(tput setaf 3)
 clr_red=$(tput setaf 1)
 clr_grn=$(tput setaf 2)
@@ -44,8 +45,8 @@ if [ `date +%F` \> $apt_last_updated ]; then
     sudo apt-get update > $LOGDIR/apt.log
 fi
 sudo apt-get -y install policykit-1
-sudo apt-get -y install xorg build-essential wget unzip tmux slim surf libx11-dev \
-    libxft-dev libxinerama-dev feh dkms >> $LOGDIR/apt.log
+sudo apt-get -y install xorg build-essential wget unzip tmux surf libx11-dev \
+    libxft-dev libxinerama-dev feh dkms xclip >> $LOGDIR/apt.log
 
 donezo
 
@@ -53,7 +54,16 @@ donezo
 header "# Linking all the configs..."
 ################################################################################
 
+GTK2_KEY_THEMES_DIR=~/.themes/mac/gtk-2.0-key
+GTK3_CONFIG_DIR=$XDG_CONFIG_HOME/gtk-3.0/
+GTK3_KEY_THEMES_DIR=~/.themes/mac/gtk-3.0
+
+mkdir -p $GTK2_KEY_THEMES_DIR
+mkdir -p $GTK3_CONFIG_DIR
+mkdir -p $GTK3_KEY_THEMES_DIR
+
 ln -sf $DIR/.bashrc ~/.bashrc
+ln -sf $DIR/.bash_aliases ~/.bash_aliases
 ln -sf $DIR/.asoundrc ~/.asoundrc
 ln -sf $DIR/.xinitrc ~/.xinitrc
 ln -sf $DIR/.Xresources ~/.Xresources
@@ -62,6 +72,9 @@ ln -sf $DIR/.Xresources.lodpi ~/.Xresources.lodpi
 ln -sf $DIR/.auto-dpi.sh ~/.auto-dpi.sh
 ln -sf $DIR/.tmux.conf ~/.tmux.conf
 ln -sf $DIR/.gtkrc-2.0 ~/
+ln -sf $DIR/gtk-2.0-key-theme $GTK2_KEY_THEMES_DIR/gtkrc
+ln -sf $DIR/gtk-3.0-settings.ini $GTK3_CONFIG_DIR/settings.ini
+ln -sf $DIR/gtk-3.0-key-theme $GTK3_KEY_THEMES_DIR/gtk-keys.css
 
 donezo
 
@@ -73,6 +86,8 @@ mkdir -p ~/bin
 ln -sf $DIR/scripts/pbcopy ~/bin/
 ln -sf $DIR/scripts/impostor ~/bin/
 ln -sf $DIR/scripts/dwmdwmdwm ~/bin/
+ln -sf $DIR/scripts/ssh-add-macbook ~/bin/
+ln -sf $DIR/scripts/git-web-open ~/bin/
 ln -sf $DIR/../scripts/git-web ~/bin/
 
 ################################################################################
@@ -117,11 +132,9 @@ cd ~/projects/dmenu
 make > $LOGDIR/dmenu.log
 sudo make install >> $LOGDIR/dmenu.log
 
-sudo cp -r $DIR/slim-theme /usr/share/slim/themes/debian-lines-hidpi
-sudo sed -ri 's/^#? ?default_user.*/default_user artem/' /etc/slim.conf
-sudo sed -i 's/^current_theme.*/current_theme debian-lines-hidpi/' /etc/slim.conf
-sudo sed -i 's/^login_cmd.*/login_cmd exec \/bin\/bash - ~\/.xinitrc %session/' /etc/slim.conf
-sudo sed -ri 's/^#? ?auto_login.*/auto_login yes/' /etc/slim.conf
+# Auto-login to virtual console
+sudo mkdir -p /etc/systemd/system/getty@tty1.service.d
+sudo cp $DIR/autologin.conf /etc/systemd/system/getty@tty1.service.d/
 
 donezo
 
@@ -136,7 +149,7 @@ mkdir -p $fontconfig_dir
 ln -sf $DIR/hidpi-fonts.conf $fontconfig_dir/
 ln -sf $DIR/lodpi-fonts.conf $fontconfig_dir/
 
-sudo apt-get -y install fonts-play fonts-droid fonts-ubuntu-title \
+sudo apt-get -y install fonts-play fonts-ubuntu-title \
     fonts-ubuntu-font-family-console fonts-opensymbol fonts-liberation \
     ttf-ubuntu-font-family >> $LOGDIR/apt.log
 

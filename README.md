@@ -15,7 +15,7 @@ Nothing to see here.
     * Adapter 2: Paravirtualized Network (Host-only, 192.168.42.0/255)
   * Other features:
     * Bi-directional clipboard
-* Install Ubuntu 15.04 Minimal.
+* Install Ubuntu 16.04 Minimal.
 * Install VirtualBox Guest Additions
 * Install `openssh-server`.
 * Install SSH key pair.
