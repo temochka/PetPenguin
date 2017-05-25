@@ -10,6 +10,5 @@ fi
 if [[ $1 == "file:///*" ]]; then
     xargs $local_browser $1
 else
-    ssh macbook open $1
+    ssh ${MACOS_SSH_HOSTNAME:-192.168.42.1} open $1
 fi
-

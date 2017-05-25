@@ -30,6 +30,6 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.provision 'shell', inline: 'apt-get update'
-  config.vm.provision 'shell', inline: 'cd /toolkit; ./install_linux.sh', privileged: false, run: 'always'
+  config.vm.provision 'shell', inline: "cd /toolkit; ./install_linux#{'_artem' if ENV['IAMHOME']}.sh", privileged: false, run: 'always'
   config.vm.provision 'shell', inline: 'pkill -t tty1 || true', run: 'always'
 end

@@ -9,12 +9,12 @@ clr_grn=$(tput setaf 2)
 clr_reg=$(tput sgr0)
 
 if [[ `uname` == 'Darwin' ]]; then
-    echo "Whoa! I don't want all this Linux shit on my OS X."
+    echo "Whoa! I don't want all this Linux stuff on my macOS."
     exit 1
 fi
 
 if [[ `whoami` == 'root' ]]; then
-    echo "Whoa! No roots here, only artems."
+    echo "Whoa! No roots here, only laymen."
     exit 1
 fi
 
@@ -212,13 +212,5 @@ mkdir -p $st_user_dir
 ln -f "$DIR/extras/Default (Linux).sublime-keymap" "$st_user_dir/Default (Linux).sublime-keymap"
 cp -n "$DIR/extras/Preferences.sublime-settings" "$st_user_dir/Preferences.sublime-settings"
 ln -sf "$DIR/extras/dpi.py" "$st_user_dir/"
-
-donezo
-
-################################################################################
-header "# Configuring Git..."
-################################################################################
-git config --global user.name "Artem Chistyakov"
-git config --global user.email "chistyakov.artem@gmail.com"
 
 donezo
