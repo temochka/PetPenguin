@@ -1,5 +1,7 @@
 # PetPenguin
 
+<img src="screenshots/sublime.png?raw=true" width="800" alt="Sublime Text 3 running side by side with IRB in a macOS window" title="PetPenguin in action">
+
 PetPenguin is my custom configuration of Ubuntu 16.04 designed to run in VirtualBox on macOS hosts. It tries to mimic a “normal” GUI app running on your Mac. The primary purpose of this project is to provide an accessible virtual machine template for experimentation and running software native to Linux. The configuration is highly opinionated and is unlikely to be useful for anyone but myself. This is also the place where I store my dot-files.
 
 PetPenguin is alpha software.
