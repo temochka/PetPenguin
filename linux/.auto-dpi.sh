@@ -10,8 +10,8 @@ xrandr --auto
 xrdb -merge ~/.Xresources
 
 case $resolution in
-  # Hopefully, Apple Thunderbult Display 27"
-  "2560 x 1440")
+  # Hopefully, Apple Thunderbult Display 27" or 21" iMac
+  "2560 x 1440"|"1920 x 1080")
     export UI_SCALE_FACTOR=1
     export QT_AUTO_SCREEN_SCALE_FACTOR=1
     ln -fs $fonts_avail_dir/lodpi-fonts.conf $fonts_dir/fonts.conf
