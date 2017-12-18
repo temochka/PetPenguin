@@ -12,4 +12,5 @@ fi
 mkdir -p ~/bin
 ln -sf $DIR/scripts/git-web ~/bin/
 ln -sf $DIR/mac/scripts/git-web-open ~/bin/
+ln -sf $DIR/mac/scripts/appify ~/bin/
 

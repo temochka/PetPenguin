@@ -1,66 +1,69 @@
-# Highly opinionated CLI toolkit
+# PetPenguin
 
-Nothing to see here.
+<img src="screenshots/sublime.png?raw=true" width="800" alt="Sublime Text 3 running side by side with IRB in a macOS window" title="PetPenguin in action">
 
-## Installation on Linux
+PetPenguin is my custom configuration of Ubuntu 16.04 designed to run in VirtualBox on macOS hosts. It tries to mimic a “normal” GUI app running on your Mac. The primary purpose of this project is to provide an accessible virtual machine template for experimentation and running software native to Linux. The configuration is highly opinionated and is unlikely to be useful for anyone but myself. This is also the place where I store my dot-files.
 
-* VirtualBox settings:
-  * RAM: 2048+ MB RAM
-  * CPU: 2+ CPUs
-  * 128 MB Video Memory, 3D acceleration enabled
-  * Virtualization Options: KVM paravirtualization (VT-x/AMD-V, Nested Paging, PAE/NX)
-  * Audio: Core audio driver, Intel HD Audio
-  * Network:
-    * Adapter 1: Intel PRO/1000 MT Desktop (NAT)
-    * Adapter 2: Paravirtualized Network (Host-only, 192.168.42.0/255)
-  * Other features:
-    * Bi-directional clipboard
-* Install Ubuntu 16.04 Minimal.
-* Install VirtualBox Guest Additions
-* Install `openssh-server`.
-* Install SSH key pair.
-* Install Git.
-* Clone this repo.
-* Run `linux_install.sh`.
-* ...
-* PROFIT! (at this point it doesn't work, probably)
+PetPenguin is alpha software.
 
-Possibly useful config:
+## Installation (Easy)
 
-```
-# /etc/network/interfaces
-# The loopback network interface
-auto lo
-iface lo inet loopback
+Requires [Vagrant](https://www.vagrantup.com) and [VirtualBox](https://www.virtualbox.org).
 
-# The primary network interface
-auto eth1
-iface eth1 inet dhcp
-pre-up sleep 2
+1. Clone this repo: `git clone git@github.com:temochka/PetPenguin.git`.
+2. Open the clonned directory: `cd PetPenguin`.
+3. Run `vagrant up`.
+4. Run `vagrant reload` if you notice any issues after the installation.
 
-# The host-only network interface
-# auto eth1
-auto eth0
-iface eth0 inet static
-address 192.168.42.42
-netmask 255.255.255.0
-```
+## Installation (Advanced)
 
-## Details (Linux)
+Requires [VirtualBox](https://www.virtualbox.org).
 
-* slim session manager with custom HiDPI theme (auto-login enabled)
-* dwm window manager
-* st terminal (tmux for scrolling and text reflow)
-* dmenu app launcher
-* solarized colors
-* poor, optional HiDPI support held on duct tape
-* OS X shortcuts for copy-paste
-* (maybe) useful utilities:
-  * `impostor` - pretend browser that opens remote URLs with default browser on the host machine and local URLs with `surf`.
-  * `git-web` - git extension that prints a web URL for a repo hosted on Github or Beanstalk.
-  * `pbcopy` - `xclip` wrapper that works similarly to its OS X namesake.
+1. Create a new VirtualBox VM with the following settings:
+  * 2048+ MB RAM, 2+ CPUs, 128 MB Video Memory (3D acceleration enabled);
+  * enable KVM paravirtualization (VT-x/AMD-V, Nested Paging, PAE/NX);
+  * for sound, select Core audio driver, Intel HD Audio;
+  * enable bi-directional clipboard.
+2. Install Ubuntu 16.04 Minimal.
+3. Install VirtualBox Guest Additions.
+4. Clone this repo: `git clone git@github.com:temochka/PetPenguin.git`.
+5. Open the clonned directory: `cd PetPenguin`.
+6. Run `./install_linux.sh`.
 
-## Details (OS X)
+## Installing dot-files on Mac
 
-Read the source.
+1. Clone this repo: `git clone git@github.com:temochka/PetPenguin.git`.
+2. Open the clonned directory: `cd PetPenguin`.
+3. Run `./install_mac.sh`.
 
+## Usage Instructions
+
+### Shortcuts
+
+Standard macOS shortcuts should work in the terminal and most GTK apps. Many host shortcuts should behave normally (e.g., spotlight, taking screenshots, switching between input sources, etc.).
+
+| Shortcut | Action |
+|------------|----------|
+| <kbd>⌘</kbd>+<kbd>1</kbd>, ..., <kbd>⌘</kbd>+<kbd>0</kbd> | Switch between IDE tabs.
+| <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd> ..., <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>0</kbd> | Move current panel to the specified tab.
+| <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd> | Run a terminal ([st](http://st.suckless.org)+[tmux](https://tmux.github.io)).
+| <kbd>⌘</kbd>+<kbd>J</kbd> | Select the next panel.
+| <kbd>⌘</kbd>+<kbd>K</kbd> | Select the previous panel.
+| <kbd>⌘</kbd>+<kbd>Enter</kbd> | Expand the selected panel.
+| <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>W</kbd> | Close the selected panel.
+| <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>Space</lbd> | Show the application launcher ([dmenu](http://tools.suckless.org/dmenu/)).
+| <kbd>⌘</kbd>+<kbd>+</kbd> | Widen the expanded panel.
+| <kbd>⌘</kbd>+<kbd>-</kbd> | Shrink the expanded panel.
+| <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>+</lbd> | Disable the expanded panel (makes all panels equal).
+| <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>-</lbd> | Enable the expanded panel (default).
+| <kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>Q</kbd> | Restart the UI (X11).
+
+### Useful Utilities
+
+#### pbcopy
+
+Good old `pbcopy` that works between the host and the guest VM. Put any terminal output to to the clipboard by running `echo "anything" | pbcopy`.
+
+#### impostor
+
+Most Linux apps will use the `$BROWSER` environment variable to determine your current browser. Unless you want to run the browser inside the VM (can be installed from APT), impostor will attempt to SSH to the host (assumed to be at 192.168.42.1 or specified via the `$MACOS_SSH_HOSTNAME` environment variable) and open the URL in Safari. Any local URLs will be opened in [Surf](http://surf.suckless.org).

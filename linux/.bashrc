@@ -133,7 +133,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 ssh-add -l >/dev/null || ssh-add
 
 # NVM
-export NVM_DIR="/home/artem/.nvm"
+export NVM_DIR="/home/${USER}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # X11
