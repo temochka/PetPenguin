@@ -86,7 +86,7 @@ let mapleader=","
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=16
 " Use visual bell instead of a sound
-" set vb
+set vb
 
 if &term =~ '256color'
   set t_ut=
@@ -100,7 +100,10 @@ set background=light
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
   set guioptions-=T  " no toolbar
-  set guifont=Fira\ Mono\ OT:h16
+  set guifont=Fira\ Mono:h16
+  set background=light
+else
+  set background=dark
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
