@@ -17,7 +17,9 @@ ln -sf $DIR/mac/scripts/appify ~/bin/
 echo "Making sure Homebrew is installed..."
 brew --version > /dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew install fzf
+brew install \
+    bash-git-prompt \
+    fzf
 
 echo "Including .bash_profile"
 include_string="source $DIR/mac/.bash_profile"
