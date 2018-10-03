@@ -1,5 +1,11 @@
 p() {
-    cd ~/projects/$(ls ~/projects | fzf)
+    PROJECT=$(ls ~/projects | fzf)
+
+    if [ -z $PROJECT ]; then
+      return;
+    fi
+
+    cd ~/projects/$PROJECT
 }
 
 bind '"\C-p":"p\n"'
