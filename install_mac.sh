@@ -17,9 +17,24 @@ ln -sf $DIR/mac/scripts/appify ~/bin/
 echo "Making sure Homebrew is installed..."
 brew --version > /dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew install \
-    bash-git-prompt \
-    fzf
+echo "Installing my favorite formulas..."
+homebrew_pkgs="
+  autoconf
+  automake
+  bash-git-prompt
+  fzf
+  git
+  gnupg
+  libuv
+  libyaml
+  mackup
+  macvim
+  sqlite
+  telnet
+  wget
+"
+
+brew install $homebrew_pkgs || brew upgrade && brew install $homebrew_pkgs
 
 echo "Including .bash_profile"
 include_string="source $DIR/mac/.bash_profile"
@@ -30,3 +45,5 @@ if ! grep "^${include_string}$" ~/.bash_profile 2>&1 > /dev/null; then
     echo $include_string >> ~/.bash_profile
 fi
 
+echo "Configure mackup..."
+ln -sf $DIR/mac/.mackup.cfg ~/.mackup.cfg
