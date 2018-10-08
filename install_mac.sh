@@ -1,6 +1,8 @@
 #!/bin/bash
 
 DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+LINUX_DIR=$DIR/linux
+
 clr_red=$(tput setaf 1)
 clr_reg=$(tput sgr0)
 
@@ -13,7 +15,6 @@ mkdir -p ~/bin
 ln -sf $DIR/scripts/git-web ~/bin/
 ln -sf $DIR/mac/scripts/git-web-open ~/bin/
 ln -sf $DIR/mac/scripts/appify ~/bin/
-
 echo "Making sure Homebrew is installed..."
 brew --version > /dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -21,6 +22,7 @@ echo "Installing my favorite formulas..."
 homebrew_pkgs="
   autoconf
   automake
+  bash-completion
   bash-git-prompt
   fzf
   git
@@ -47,3 +49,22 @@ fi
 
 echo "Configure mackup..."
 ln -sf $DIR/mac/.mackup.cfg ~/.mackup.cfg
+
+################################################################################
+echo "# Configuring Vim..."
+################################################################################
+
+ln -sf $LINUX_DIR/.vimrc ~/.vimrc
+mkdir -p ~/.vim ~/.vim/bundle ~/.vim/autoload
+curl -Sso ~/.vim/autoload/pathogen.vim \
+    https://raw.githubusercontent.com/tpope/vim-pathogen/v2.3/autoload/pathogen.vim
+
+cd ~/.vim/bundle
+
+git clone https://github.com/guns/vim-clojure-static > /dev/null 2>&1
+git clone https://github.com/altercation/vim-colors-solarized > /dev/null 2>&1
+git clone git://github.com/tpope/vim-dispatch.git > /dev/null 2>&1
+git clone git://github.com/tpope/vim-fireplace.git > /dev/null 2>&1
+git clone git://github.com/tpope/vim-leiningen.git > /dev/null 2>&1
+git clone git://github.com/tpope/vim-projectionist.git > /dev/null 2>&1
+
