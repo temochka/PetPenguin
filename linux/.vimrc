@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Disable compatibility mode
@@ -9,6 +9,9 @@ autocmd!
 
 " Setup pathogen
 execute pathogen#infect()
+
+" Modify runtime path to include fzf
+set rtp+=/usr/local/opt/fzf
 
 " Enable highlighting for syntax
 syntax on
@@ -80,6 +83,8 @@ aug END
 " Shortcuts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader=","
+
+nnoremap <silent> <Leader>s :call fzf#run({'sink': 'e'})<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Appearance
