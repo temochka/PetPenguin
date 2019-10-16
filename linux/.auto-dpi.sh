@@ -18,8 +18,8 @@ case $resolution in
     xrandr --dpi 109
     xrdb -merge ~/.Xresources.lodpi
     ;;
-  # Hopefully, Apple MacBook Pro 13" or 15"
-  "2560 x 1600"|"2880 x 1800")
+  # Hopefully, Apple MacBook Pro 13" or 15" or a 4k monitor
+  "2560 x 1600"|"2880 x 1800"|"3840 x 2160")
     ln -fs $fonts_avail_dir/hidpi-fonts.conf $fonts_dir/fonts.conf
     export UI_SCALE_FACTOR=2
     export GDK_SCALE=2
