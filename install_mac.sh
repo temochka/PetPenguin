@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/bin/sh
 DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 LINUX_DIR=$DIR/linux
 
@@ -24,6 +23,7 @@ homebrew_pkgs="
   automake
   bash-completion
   bash-git-prompt
+  zsh-completions
   fzf
   git
   gnupg
@@ -38,13 +38,24 @@ homebrew_pkgs="
 
 brew install $homebrew_pkgs || brew upgrade && brew install $homebrew_pkgs
 
-echo "Including .bash_profile"
-include_string="source $DIR/mac/.bash_profile"
+if [[ $SHELL == '/bin/zsh' ]]; then
+    echo "Including .zprofile"
+    include_string="source $DIR/mac/.zprofile"
 
-if ! grep "^${include_string}$" ~/.bash_profile 2>&1 > /dev/null; then
-    echo "Adding the following string to ~/.bash_profile:"
-    echo "  ${include_string}"
-    echo $include_string >> ~/.bash_profile
+    if ! grep "^${include_string}$" ~/.zprofile 2>&1 > /dev/null; then
+        echo "Adding the following string to ~/.zprofile:"
+        echo "  ${include_string}"
+        echo $include_string >> ~/.zprofile
+    fi
+else
+    echo "Including .bash_profile"
+    include_string="source $DIR/mac/.bash_profile"
+
+    if ! grep "^${include_string}$" ~/.bash_profile 2>&1 > /dev/null; then
+        echo "Adding the following string to ~/.bash_profile:"
+        echo "  ${include_string}"
+        echo $include_string >> ~/.bash_profile
+    fi
 fi
 
 echo "Configure mackup..."
