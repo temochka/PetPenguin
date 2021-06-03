@@ -1,11 +1,11 @@
 p() {
-    PROJECT=$(ls ~/src | fzf)
+    PROJECT=$(ls -a ~/projects | fzf)
 
     if [ -z $PROJECT ]; then
       return;
     fi
 
-    cd ~/src/$PROJECT
+    cd ~/projects/$PROJECT
 }
 
 # Enable Ctrl-x-e to edit command line
@@ -16,8 +16,10 @@ bindkey -s "\C-p" "p\n"
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
-PATH="$PATH:~/bin"
+PATH="$PATH:$HOME/bin:$HOME/.cargo/bin"
 EDITOR=vim
+FZF_DEFAULT_COMMAND="fd . $HOME"
+FZF_CTRL_T_COMMAND="fd ."
 
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
@@ -25,4 +27,3 @@ if type brew &>/dev/null; then
     autoload -Uz compinit
     compinit
 fi
-

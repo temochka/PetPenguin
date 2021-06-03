@@ -24,9 +24,11 @@ homebrew_pkgs="
   bash-completion
   bash-git-prompt
   zsh-completions
+  fd
   fzf
   git
   gnupg
+  jq
   libuv
   libyaml
   mackup
