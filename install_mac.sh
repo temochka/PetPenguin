@@ -14,6 +14,7 @@ mkdir -p ~/bin
 ln -sf $DIR/scripts/git-web ~/bin/
 ln -sf $DIR/mac/scripts/git-web-open ~/bin/
 ln -sf $DIR/mac/scripts/appify ~/bin/
+ln -sf $DIR/mac/.gitconfig ~/
 echo "Making sure Homebrew is installed..."
 brew --version > /dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 

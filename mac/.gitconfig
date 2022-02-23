@@ -1,0 +1,11 @@
+[user]
+	email = chistyakov.artem@gmail.com
+	name = Artem Chistyakov
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+[alias]
+    co = "checkout"
+    ci = "commit"
+
