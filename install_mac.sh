@@ -19,6 +19,8 @@ echo "Making sure Homebrew is installed..."
 brew --version > /dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Installing my favorite formulas..."
+brew tap homebrew/cask-fonts
+
 homebrew_pkgs="
   autoconf
   automake
@@ -37,6 +39,8 @@ homebrew_pkgs="
   sqlite
   telnet
   wget
+  font-fira-mono
+  font-fira-code
 "
 
 brew install $homebrew_pkgs || brew upgrade && brew install $homebrew_pkgs
@@ -77,8 +81,8 @@ cd ~/.vim/bundle
 
 git clone https://github.com/guns/vim-clojure-static > /dev/null 2>&1
 git clone https://github.com/altercation/vim-colors-solarized > /dev/null 2>&1
-git clone git://github.com/tpope/vim-dispatch.git > /dev/null 2>&1
-git clone git://github.com/tpope/vim-fireplace.git > /dev/null 2>&1
-git clone git://github.com/tpope/vim-leiningen.git > /dev/null 2>&1
-git clone git://github.com/tpope/vim-projectionist.git > /dev/null 2>&1
+git clone https://github.com/tpope/vim-dispatch.git > /dev/null 2>&1
+git clone https://github.com/tpope/vim-fireplace.git > /dev/null 2>&1
+git clone https://github.com/tpope/vim-salve.git > /dev/null 2>&1
+git clone https://github.com/tpope/vim-projectionist.git > /dev/null 2>&1
 

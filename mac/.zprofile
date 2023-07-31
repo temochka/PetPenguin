@@ -21,6 +21,8 @@ EDITOR=vim
 FZF_DEFAULT_COMMAND="fd . $HOME"
 FZF_CTRL_T_COMMAND="fd ."
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
