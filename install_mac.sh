@@ -36,6 +36,7 @@ homebrew_pkgs="
   libyaml
   mackup
   macvim
+  neofetch
   sqlite
   telnet
   wget
