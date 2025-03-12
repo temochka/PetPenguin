@@ -31,9 +31,11 @@ homebrew_pkgs="
   fzf
   git
   gnupg
+  imagemagick
   jq
   libuv
   libyaml
+  pngquant
   mackup
   macvim
   neofetch
