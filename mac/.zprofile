@@ -14,6 +14,8 @@ blog-png() {
         return 1
     fi
 
+    local max_width="${MAX_WIDTH:-1400}"  # Default to 1400px if MAX_WIDTH is not set
+
     for input_file in "$@"; do
         if [[ ! -f "$input_file" ]]; then
             echo "Skipping: $input_file (not a valid file)"
@@ -22,10 +24,9 @@ blog-png() {
 
         local output_file="${input_file%.*}.compressed.png"
 
-        echo "Processing: $input_file -> $output_file"
+        echo "Processing: $input_file -> $output_file (max width: $max_width px)"
 
-        # Resize and compress the image in a single pipeline
-        magick convert "$input_file" -resize 1400x PNG:- | pngquant --quality=65-80 --speed 1 --output "$output_file" -
+        magick "$input_file" -resize "${max_width}x" PNG:- | pngquant --quality=65-80 --speed 1 --output "$output_file" -
 
         echo "Compression complete: $output_file"
     done
